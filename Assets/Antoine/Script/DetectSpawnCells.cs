@@ -13,6 +13,12 @@ public class DetectSpawnCells : MonoBehaviour
             canSpawnTetro = false;
     }
 
+    void OnTriggerEnter2D(Collider2D bam)
+    {
+        if (bam.gameObject.tag == "Tetromino")
+            canSpawnTetro = false;
+    }
+
     void OnTriggerExit2D(Collider2D bam)
     {
         if (bam.gameObject.tag == "Tetromino")

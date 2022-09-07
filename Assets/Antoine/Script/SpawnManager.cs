@@ -8,14 +8,11 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance;
 
-    [Header("Tab")]
-    [SerializeField] private GameObject[] spawnCells;
+    [Header("Tab")] [SerializeField] private GameObject[] spawnCells;
 
-    [Header("Tetro stat")]
-    private int[] orientation = new int[]{0,90,180,270};
+    [Header("Tetro stat")] private int[] orientation = new int[] {0, 90, 180, 270};
 
-    [Header("Tetro")]
-    [SerializeField] private int minTetro;
+    [Header("Tetro")] [SerializeField] private int minTetro;
     [SerializeField] private int maxTetro;
     public int currentTetro = 0;
     [SerializeField] private int tetroL;
@@ -39,7 +36,23 @@ public class SpawnManager : MonoBehaviour
             int _shape = UnityEngine.Random.Range(0, shape.Length);
             int _spawner = UnityEngine.Random.Range(0, spawnCells.Length);
 
-            GameObject tetri = Instantiate(shape[_shape]);
+            //check if you can spawn a tetro
+            if (spawnCells[_spawner].GetComponent<DetectSpawnCells>().canSpawnTetro)
+            {
+                SpawnTetro(_shape, _spawner);
+            }
         }
+    }
+
+    private void SpawnTetro(int _shape, int _spawner)
+    {
+        GameObject tetri = Instantiate(shape[_shape], spawnCells[_spawner].transform.position, Quaternion.identity);
+        currentTetro++;
+
+        Tetromino tetro = tetri.GetComponent<Tetromino>();
+        tetro.dir = spawnCells[_spawner].GetComponent<DetectSpawnCells>().dir;
+        tetro.velIni = 0.1f;
+
+        spawnCells[_spawner].GetComponent<DetectSpawnCells>().canSpawnTetro = false;
     }
 }
