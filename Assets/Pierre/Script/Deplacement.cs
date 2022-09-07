@@ -14,6 +14,11 @@ public class Deplacement : MonoBehaviour
     public float groundCheckRadius;
     public LayerMask collisionLayers;
 
+    public Transform sightStart, sightEndH1, sightEndH2, sightEndV;
+    public bool murH1 = false;
+    public bool murH2 = false;
+    public bool murV = false;
+
     void Start()
     {
         rg2D = GetComponent<Rigidbody2D>();
@@ -35,17 +40,36 @@ public class Deplacement : MonoBehaviour
         if (Input.GetButton("Horizontal"))
                     directionX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
 
-        transform.Translate(directionX, 0, 0);
+        if (directionX > 0 && murH1 == false)
+            transform.Translate(directionX, 0, 0);
 
-        if (Input.GetButton("Jump") && isGrounded == true)
-        {
-            Debug.Log("saut");
-            //rg2D.velocity = new Vector2(rg2D.velocity.x, force);
+        if (directionX < 0 && murH2 == false)
+            transform.Translate(directionX, 0, 0);
+
+        if (isGrounded && murV || murH1 && murH2)
+            Debug.Log("t mor");
+
+        
+
+        if (Input.GetButton("Jump") && isGrounded)
             rg2D.velocity = Vector2.up* force;
+
+        Raycasting();
+        Behaviours();
+
         }
 
+    void Raycasting()
+    {
+        murH1 = Physics2D.Linecast(sightStart.position, sightEndH1.position, 1 << LayerMask.NameToLayer("Ground"));
+        murH2 = Physics2D.Linecast(sightStart.position, sightEndH2.position, 1 << LayerMask.NameToLayer("Ground"));
+        murV = Physics2D.Linecast(sightStart.position, sightEndV.position, 1 << LayerMask.NameToLayer("Ground"));
+    }
 
-        }
+    void Behaviours()
+    {
+
+    }
 
     private void FixedUpdate()
     {
