@@ -10,7 +10,9 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Tab")] [SerializeField] private GameObject[] spawnCells;
 
-    [Header("Tetro stat")] private int[] orientation = new int[] {0, 90, 180, 270};
+    [Header("Tetro stat")]
+    public int timeBeforeExplosion;
+    private int[] orientation = new int[] {0, 90, 180, 270};
 
     [Header("Tetro")] [SerializeField] private int minTetro;
     [SerializeField] private int maxTetro;
@@ -49,7 +51,7 @@ public class SpawnManager : MonoBehaviour
         GameObject tetri = Instantiate(shape[_shape], spawnCells[_spawner].transform.position, Quaternion.identity);
         currentTetro++;
 
-        Tetromino tetro = tetri.GetComponent<Tetromino>();
+        Tetromino tetro = tetri.GetComponentInChildren<Tetromino>();
         tetro.dir = spawnCells[_spawner].GetComponent<DetectSpawnCells>().dir;
         tetro.velIni = 0.1f;
 
