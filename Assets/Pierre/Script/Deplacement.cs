@@ -7,6 +7,9 @@ public class Deplacement : MonoBehaviour
     public float speed;
     private Rigidbody2D rg2D;
 
+    public bool faceR = true;
+    private SpriteRenderer SpriteR;
+
     public float force;
     public bool isGrounded;
 
@@ -22,6 +25,7 @@ public class Deplacement : MonoBehaviour
     void Start()
     {
         rg2D = GetComponent<Rigidbody2D>();
+        SpriteR = GetComponent<SpriteRenderer>();
     }
 
   
@@ -39,6 +43,17 @@ public class Deplacement : MonoBehaviour
 
         if (Input.GetButton("Horizontal"))
                     directionX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            faceR = false;
+            SpriteR.flipX = true;
+        }
+        else if (Input.GetAxis("Horizontal") > 0)
+        {
+            faceR = true;
+            SpriteR.flipX = false;
+        }
 
         if (directionX > 0 && murH1 == false)
             transform.Translate(directionX, 0, 0);
