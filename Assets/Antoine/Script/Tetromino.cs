@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Tetromino : MonoBehaviour
 {
-    [Header("Movement")] [SerializeField] [Tooltip("Velocité Initial")] [Range(0, 1)]
-    private float velIni;
+    [Header("Movement")] 
+    [Tooltip("Velocité Initial")] [Range(0, 1)] public float velIni;
 
     [SerializeField] [Range(0, 1)] private float velIt;
     [SerializeField] private float upSpeed;
@@ -24,14 +24,21 @@ public class Tetromino : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D Bam)
     {
-        canMove = false;
-        StartCoroutine(Kaboom());
+        Debug.Log(Bam.gameObject.tag);
+        if (Bam.gameObject.tag == "Tetromino")
+        {
+            canMove = false;
+            StartCoroutine(Kaboom());
+        }
     }
 
     void OnCollisionExit2D(Collision2D Bam)
     {
-        canMove = true;
-        StopCoroutine(Kaboom());
+        if (Bam.gameObject.tag == "Tetromino")
+        {
+            canMove = true;
+            StopCoroutine(Kaboom());
+        }
     }
 
     IEnumerator Kaboom()
