@@ -15,6 +15,7 @@ public class SpawnManager : MonoBehaviour
     [Header("Tetro stat")]
     public int timeBeforeExplosion;
     private int[] orientation = new int[] {0, 90, 180, 270};
+    [Range(0, 2)] public float waitingTime = 2.0f;
 
     [Header("Tetro")] [SerializeField] private int minTetro;
     [SerializeField] private int maxTetro;
@@ -56,6 +57,7 @@ public class SpawnManager : MonoBehaviour
 
         Tetromino tetro = tetri.GetComponentInChildren<Tetromino>();
         tetro.dir = spawnCells[_spawner].GetComponent<DetectSpawnCells>().dir;
+        tetro.waitingTime = waitingTime;
         tetro.velIni = 0.2f;
 
         spawnCells[_spawner].GetComponent<DetectSpawnCells>().canSpawnTetro = false;
