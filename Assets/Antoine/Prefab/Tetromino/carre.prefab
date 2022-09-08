@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6182515012526008125}
   - component: {fileID: 3579158298442526313}
   - component: {fileID: 4698295768416356588}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: carre
   m_TagString: Tetromino
   m_Icon: {fileID: 0}
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velIni: 1
+  waitingTime: 0
   objectif: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
   canMove: 0
@@ -91,14 +92,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &8762658901658075362
 GameObject:

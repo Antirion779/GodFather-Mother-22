@@ -10,21 +10,24 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Tab")] 
     [SerializeField] private GameObject[] spawnCells;
-    public List<GameObject> tetro;
+    //public List<GameObject> TetroList;
 
     [Header("Tetro stat")]
     public int timeBeforeExplosion;
     private int[] orientation = new int[] {0, 90, 180, 270};
     [Range(0, 2)] public float waitingTime = 2.0f;
 
-    [Header("Tetro")] [SerializeField] private int minTetro;
+    [Header("Tetro")] 
+    //[SerializeField] private int minTetro;
     [SerializeField] private int maxTetro;
     public int currentTetro = 0;
-    [SerializeField] private int tetroL;
-    [SerializeField] private int tetroR;
-    [SerializeField] private int tetroT;
-    [SerializeField] private int tetroB;
+    //[SerializeField] private int tetroL;
+    //[SerializeField] private int tetroR;
+    //[SerializeField] private int tetroT;
+    //[SerializeField] private int tetroB;
     [SerializeField] GameObject[] shape;
+    [SerializeField] private float timeBtwSpawn = 1;
+    private bool canSpawn = true;
 
 
     void Awake()
@@ -42,18 +45,28 @@ public class SpawnManager : MonoBehaviour
             int _spawner = UnityEngine.Random.Range(0, spawnCells.Length);
             int _orientation = UnityEngine.Random.Range(0, orientation.Length);
 
-            //check if you can spawn a tetro
-            if (spawnCells[_spawner].GetComponent<DetectSpawnCells>().canSpawnTetro)
-            {
-                SpawnTetro(_shape, _spawner, _orientation);
-            }
+            if (canSpawn)
+                //check if you can spawn a tetro
+                StartCoroutine(TempoSpawn(_spawner, _shape, _orientation));
         }
+    }
+
+    IEnumerator TempoSpawn(int _spawner, int _shape, int _orientation)
+    {
+        if (spawnCells[_spawner].GetComponent<DetectSpawnCells>().canSpawnTetro)
+            SpawnTetro(_shape, _spawner, _orientation);
+
+        canSpawn = false;
+        yield return new WaitForSeconds(1.5f);
+        canSpawn = true;
     }
 
     private void SpawnTetro(int _shape, int _spawner, int _orientation)
     {
         GameObject tetri = Instantiate(shape[_shape], spawnCells[_spawner].transform.position, Quaternion.Euler(spawnCells[_spawner].transform.rotation.x, spawnCells[_spawner].transform.rotation.y, orientation[_orientation]));
         currentTetro++;
+        //TetroList.Add(tetri);
+        tetri.transform.localScale = new Vector3(2, 2, 1);
 
         Tetromino tetro = tetri.GetComponentInChildren<Tetromino>();
         tetro.dir = spawnCells[_spawner].GetComponent<DetectSpawnCells>().dir;
