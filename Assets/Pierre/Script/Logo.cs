@@ -25,7 +25,7 @@ public class Logo : MonoBehaviour
         if (fall)
             transform.Translate(0, -vitesse, 0);
 
-        if (transform.position.y <= 2.4)
+        if (transform.position.y <= 2.35)
         {
             fall = false;
             sonLogo.SetActive(true);
@@ -40,7 +40,7 @@ public class Logo : MonoBehaviour
 
         if (compteur <= 0 && reset == true)
         {
-            SceneManager.LoadScene("Menu");
+            //afficher menu
         }
             
     }
