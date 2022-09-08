@@ -46,7 +46,6 @@ public class Tetromino : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D Bam)
     {
-        Debug.Log(Bam.gameObject.name + Bam.GetContact(0).point);
         if (Bam.gameObject.tag == "Tetromino")
         {
             hasToStop = true;

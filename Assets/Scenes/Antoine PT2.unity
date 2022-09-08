@@ -388,8 +388,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
       propertyPath: maxTetro
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
+      propertyPath: waitingTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
       propertyPath: timeBtwSpawn
