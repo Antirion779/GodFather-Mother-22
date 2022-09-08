@@ -659,7 +659,15 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
+      propertyPath: cdUpgrade
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
       propertyPath: timeBtwSpawn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
+      propertyPath: modifierspeed
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3687880523822242062, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
