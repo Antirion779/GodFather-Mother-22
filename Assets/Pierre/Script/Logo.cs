@@ -25,7 +25,7 @@ public class Logo : MonoBehaviour
         if (fall)
             transform.Translate(0, -vitesse, 0);
 
-        if (transform.position.y <= 72)
+        if (transform.position.y <= 2.4)
         {
             fall = false;
             sonLogo.SetActive(true);
