@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1484178840186801938}
   - component: {fileID: 3944715087804815533}
-  - component: {fileID: 4721399872741030183}
-  - component: {fileID: 6103204178195684101}
   m_Layer: 7
   m_Name: l
   m_TagString: Tetromino
@@ -86,58 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &4721399872741030183
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1786530910070826344}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.24, y: 0.16}
-    newSize: {x: 0.24, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.107847326, y: 0.0699919}
-      - {x: -0.1099919, y: -0.0699919}
-      - {x: 0.1114217, y: -0.0699919}
-      - {x: 0.11070692, y: -0.0085946135}
-      - {x: -0.050367355, y: -0.011740208}
-      - {x: -0.049317606, y: 0.0707068}
---- !u!50 &6103204178195684101
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1786530910070826344}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!1 &9188625028444541535
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,9 +94,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6470044020189603064}
   - component: {fileID: 2726428252258230036}
+  - component: {fileID: 6643914076556580986}
+  - component: {fileID: 7362549386925612018}
   m_Layer: 0
   m_Name: l
-  m_TagString: Untagged
+  m_TagString: Tetromino
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,3 +134,58 @@ MonoBehaviour:
   velIni: 1
   objectif: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
+  canMove: 0
+  hasToStop: 0
+  ID: 0
+--- !u!60 &6643914076556580986
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9188625028444541535}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.010315647, y: 0.06975436}
+      - {x: -0.06923983, y: 0.069497846}
+      - {x: -0.06874419, y: -0.06826479}
+      - {x: 0.14946438, y: -0.0695786}
+      - {x: 0.14974664, y: -0.010599036}
+      - {x: -0.010289753, y: -0.010769315}
+--- !u!50 &7362549386925612018
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9188625028444541535}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

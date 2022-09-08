@@ -8,7 +8,9 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance;
 
-    [Header("Tab")] [SerializeField] private GameObject[] spawnCells;
+    [Header("Tab")] 
+    [SerializeField] private GameObject[] spawnCells;
+    public List<GameObject> tetro;
 
     [Header("Tetro stat")]
     public int timeBeforeExplosion;
@@ -53,7 +55,7 @@ public class SpawnManager : MonoBehaviour
 
         Tetromino tetro = tetri.GetComponentInChildren<Tetromino>();
         tetro.dir = spawnCells[_spawner].GetComponent<DetectSpawnCells>().dir;
-        tetro.velIni = 0.1f;
+        tetro.velIni = 0.2f;
 
         spawnCells[_spawner].GetComponent<DetectSpawnCells>().canSpawnTetro = false;
     }

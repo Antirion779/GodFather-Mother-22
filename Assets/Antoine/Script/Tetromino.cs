@@ -8,12 +8,12 @@ public class Tetromino : MonoBehaviour
     [Header("Movement")] 
     [Tooltip("Velocité Initial")] [Range(0, 1)] public float velIni;
     [SerializeField] private Vector3 objectif;
-    private int moveAvancement;
 
     //[SerializeField] [Range(0, 1)] private float velIt;
     //[SerializeField] private float upSpeed;
     public Vector3 dir;
-    private bool canMove = true;
+    [SerializeField] private bool canMove = false;
+    [SerializeField] private bool hasToStop = false;
     public int ID;
 
     void Start()
@@ -24,10 +24,11 @@ public class Tetromino : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canMove)
-            Vector3.MoveTowards(transform.position,objectif,Time.deltaTime * velIni);
+        if (canMove && !hasToStop)
+            transform.position = Vector3.MoveTowards(transform.position,objectif, velIni * Time.deltaTime);
         else
             GiveObjectif();
+
     }
 
     void GiveObjectif()
@@ -38,8 +39,7 @@ public class Tetromino : MonoBehaviour
     IEnumerator Move()
     {
         canMove = true;
-        yield return new WaitForSeconds(1.0f);
-        moveAvancement++;
+        yield return new WaitForSeconds(2.0f);
         canMove = false;
     }
 
@@ -48,7 +48,7 @@ public class Tetromino : MonoBehaviour
         Debug.Log(Bam.gameObject.tag);
         if (Bam.gameObject.tag == "Tetromino")
         {
-            canMove = false;
+            hasToStop = true;
             StartCoroutine(Kaboom());
         }
     }
@@ -57,7 +57,7 @@ public class Tetromino : MonoBehaviour
     {
         if (Bam.gameObject.tag == "Tetromino")
         {
-            canMove = true;
+            hasToStop = false;
             StopCoroutine(Kaboom());
         }
     }
