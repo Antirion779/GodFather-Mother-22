@@ -61,7 +61,7 @@ public class Tetromino : MonoBehaviour
     IEnumerator Kaboom()
     {
         yield return new WaitForSeconds(SpawnManager.Instance.timeBeforeExplosion);
-        animator.SetBool("Death", true);
+        //animator.SetBool("Death", true);
         SpawnManager.Instance.currentTetro -= 1;
         Destroy(gameObject);
     }
