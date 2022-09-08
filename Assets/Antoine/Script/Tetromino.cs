@@ -7,6 +7,7 @@ public class Tetromino : MonoBehaviour
 {
     [Header("Movement")] 
     [Tooltip("Velocité Initial")] [Range(0, 1)] public float velIni;
+    public float waitingTime;
     [SerializeField] private Vector3 objectif;
 
     //[SerializeField] [Range(0, 1)] private float velIt;
@@ -39,7 +40,7 @@ public class Tetromino : MonoBehaviour
     IEnumerator Move()
     {
         canMove = true;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(waitingTime);
         canMove = false;
     }
 
@@ -51,17 +52,12 @@ public class Tetromino : MonoBehaviour
             hasToStop = true;
             StartCoroutine(Kaboom());
         }
-    }
-
-    void OnCollisionExit2D(Collision2D Bam)
-    {
-        if (Bam.gameObject.tag == "Tetromino")
+        else if (Bam.gameObject.tag == "DeadZone")
         {
-            hasToStop = false;
-            StopCoroutine(Kaboom());
+            SpawnManager.Instance.currentTetro -= 1;
+            Destroy(gameObject);
         }
     }
-
 
     IEnumerator Kaboom()
     {
