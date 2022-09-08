@@ -11,16 +11,21 @@ public class Deplacement : MonoBehaviour
     private SpriteRenderer SpriteR;
 
     public float force;
-    public bool isGrounded;
+    public bool isGrounded, isPlayered;
 
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask collisionLayers;
+    public LayerMask playerLayers;
 
     public Transform sightStart, sightEndH1, sightEndH2, sightEndV;
     public bool murH1 = false;
     public bool murH2 = false;
     public bool murV = false;
+
+    public bool playerH1 = false;
+    public bool playerH2 = false;
+    public bool playerV = false;
 
     void Start()
     {
@@ -55,18 +60,18 @@ public class Deplacement : MonoBehaviour
             SpriteR.flipX = false;
         }
 
-        if (directionX > 0 && murH1 == false)
+        if (directionX > 0 && murH1 == false && playerH1 == false)
             transform.Translate(directionX, 0, 0);
 
-        if (directionX < 0 && murH2 == false)
+        if (directionX < 0 && murH2 == false && playerH2 == false)
             transform.Translate(directionX, 0, 0);
 
-        if (isGrounded && murV || murH1 && murH2)
+        if ((isGrounded || isPlayered) && murV || murH1 && murH2)
             Debug.Log("t mor");
 
         
 
-        if (Input.GetButton("Jump") && isGrounded)
+        if (Input.GetKey(KeyCode.RightShift) && (isGrounded || isPlayered) && playerV == false)
             rg2D.velocity = Vector2.up* force;
 
         Raycasting();
@@ -79,6 +84,9 @@ public class Deplacement : MonoBehaviour
         murH1 = Physics2D.Linecast(sightStart.position, sightEndH1.position, 1 << LayerMask.NameToLayer("Ground"));
         murH2 = Physics2D.Linecast(sightStart.position, sightEndH2.position, 1 << LayerMask.NameToLayer("Ground"));
         murV = Physics2D.Linecast(sightStart.position, sightEndV.position, 1 << LayerMask.NameToLayer("Ground"));
+        playerH1 = Physics2D.Linecast(sightStart.position, sightEndH1.position, 1 << LayerMask.NameToLayer("Player2"));
+        playerH2 = Physics2D.Linecast(sightStart.position, sightEndH2.position, 1 << LayerMask.NameToLayer("Player2"));
+        playerV = Physics2D.Linecast(sightStart.position, sightEndV.position, 1 << LayerMask.NameToLayer("Player2"));
     }
 
     void Behaviours()
@@ -89,6 +97,7 @@ public class Deplacement : MonoBehaviour
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionLayers);
+        isPlayered = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, playerLayers);
     }
 
     private void OnDrawGizmos()
