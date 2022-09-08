@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deplacement : MonoBehaviour
+public class DeplacementJ2 : MonoBehaviour
 {
-    public float speed;
+    public float speed, move;
     private Rigidbody2D rg2D;
 
     public bool faceR = true;
@@ -15,7 +15,7 @@ public class Deplacement : MonoBehaviour
 
     public Transform groundCheck;
     public float groundCheckRadius;
-    public LayerMask collisionLayers;
+    public LayerMask collisionLayers; 
     public LayerMask playerLayers;
 
     public Transform sightStart, sightEndH1, sightEndH2, sightEndV;
@@ -36,29 +36,37 @@ public class Deplacement : MonoBehaviour
   
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        /*float moveHorizontal = Input.GetAxis("Horizontal");
 
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 
-        rg2D.AddForce(Vector2.right * speed * Time.deltaTime);
+        //rg2D.AddForce(Vector2.right * speed * Time.deltaTime);*/
 
         float directionX = 0;
 
-        if (Input.GetButton("Horizontal"))
-                    directionX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        var move = 0;
 
-        if (Input.GetAxis("Horizontal") < 0)
+
+        if (Input.GetKey(KeyCode.Q))
         {
+            move = -1;
+            directionX = move * speed * Time.deltaTime;
+            //directionX -= Input.GetAxis("Horizontal") * Time.deltaTime * speed;
             faceR = false;
             SpriteR.flipX = true;
         }
-        else if (Input.GetAxis("Horizontal") > 0)
+
+        if (Input.GetKey(KeyCode.D))
         {
+            move = 1;
+            directionX = move * speed * Time.deltaTime;
+            //directionX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
             faceR = true;
             SpriteR.flipX = false;
         }
+
 
         if (directionX > 0 && murH1 == false && playerH1 == false)
             transform.Translate(directionX, 0, 0);
@@ -69,9 +77,8 @@ public class Deplacement : MonoBehaviour
         if ((isGrounded || isPlayered) && murV || murH1 && murH2)
             Debug.Log("t mor");
 
-        
 
-        if (Input.GetKey(KeyCode.RightShift) && (isGrounded || isPlayered) && playerV == false)
+        if (Input.GetButton("Jump") && (isGrounded || isPlayered) && playerV == false)
             rg2D.velocity = Vector2.up* force;
 
         Raycasting();
@@ -84,9 +91,9 @@ public class Deplacement : MonoBehaviour
         murH1 = Physics2D.Linecast(sightStart.position, sightEndH1.position, 1 << LayerMask.NameToLayer("Ground"));
         murH2 = Physics2D.Linecast(sightStart.position, sightEndH2.position, 1 << LayerMask.NameToLayer("Ground"));
         murV = Physics2D.Linecast(sightStart.position, sightEndV.position, 1 << LayerMask.NameToLayer("Ground"));
-        playerH1 = Physics2D.Linecast(sightStart.position, sightEndH1.position, 1 << LayerMask.NameToLayer("Player2"));
-        playerH2 = Physics2D.Linecast(sightStart.position, sightEndH2.position, 1 << LayerMask.NameToLayer("Player2"));
-        playerV = Physics2D.Linecast(sightStart.position, sightEndV.position, 1 << LayerMask.NameToLayer("Player2"));
+        playerH1 = Physics2D.Linecast(sightStart.position, sightEndH1.position, 1 << LayerMask.NameToLayer("Player1"));
+        playerH2 = Physics2D.Linecast(sightStart.position, sightEndH2.position, 1 << LayerMask.NameToLayer("Player1"));
+        playerV = Physics2D.Linecast(sightStart.position, sightEndV.position, 1 << LayerMask.NameToLayer("Player1"));
     }
 
     void Behaviours()
