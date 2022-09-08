@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Tetromino
   - SpawnCell
-  - Sol
+  - DeadZone
   layers:
   - Default
   - TransparentFX
