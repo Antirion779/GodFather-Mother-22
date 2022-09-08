@@ -39,18 +39,19 @@ public class SpawnManager : MonoBehaviour
         {
             int _shape = UnityEngine.Random.Range(0, shape.Length);
             int _spawner = UnityEngine.Random.Range(0, spawnCells.Length);
+            int _orientation = UnityEngine.Random.Range(0, orientation.Length);
 
             //check if you can spawn a tetro
             if (spawnCells[_spawner].GetComponent<DetectSpawnCells>().canSpawnTetro)
             {
-                SpawnTetro(_shape, _spawner);
+                SpawnTetro(_shape, _spawner, _orientation);
             }
         }
     }
 
-    private void SpawnTetro(int _shape, int _spawner)
+    private void SpawnTetro(int _shape, int _spawner, int _orientation)
     {
-        GameObject tetri = Instantiate(shape[_shape], spawnCells[_spawner].transform.position, Quaternion.identity);
+        GameObject tetri = Instantiate(shape[_shape], spawnCells[_spawner].transform.position, Quaternion.Euler(spawnCells[_spawner].transform.rotation.x, spawnCells[_spawner].transform.rotation.y, orientation[_orientation]));
         currentTetro++;
 
         Tetromino tetro = tetri.GetComponentInChildren<Tetromino>();
