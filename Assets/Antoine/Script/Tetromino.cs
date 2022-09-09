@@ -46,7 +46,6 @@ public class Tetromino : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D Bam)
     {
-        Debug.Log(Bam.gameObject.name + Bam.GetContact(0).point);
         if (Bam.gameObject.tag == "Tetromino")
         {
             hasToStop = true;
@@ -62,7 +61,7 @@ public class Tetromino : MonoBehaviour
     IEnumerator Kaboom()
     {
         yield return new WaitForSeconds(SpawnManager.Instance.timeBeforeExplosion);
-        animator.SetBool("Death", true);
+        //animator.SetBool("Death", true);
         SpawnManager.Instance.currentTetro -= 1;
         Destroy(gameObject);
     }

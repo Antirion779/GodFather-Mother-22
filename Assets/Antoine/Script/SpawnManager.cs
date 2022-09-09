@@ -14,19 +14,28 @@ public class SpawnManager : MonoBehaviour
 
     [Header("Tetro stat")]
     public int timeBeforeExplosion;
-    private int[] orientation = new int[] {0, 90, 180, 270};
+    private int[] orientation ={0, 90, 180, 270};
     [Range(0, 2)] public float waitingTime = 2.0f;
+    [SerializeField] [Range(0, 2)] private float timeBtwSpawn = 1;
+    [SerializeField] [Range(0, 2)] private float speed;
+    [SerializeField] private int maxTetro;
+
+    [Header("Modifier")]
+    [SerializeField] [Range(0, 30)] private float cdUpgrade;
+    [SerializeField] [Range(0, 2)] private float modifierSpawnRate;
+    [SerializeField] [Range(0, 2)] private float modifierspeed;
+    [SerializeField] [Range(0, 2)] private int modifierMaxTetro;
+    [SerializeField] [Range(0, 2)] private float modifierWaitingMovement;
+    private bool upgrade = true;
 
     [Header("Tetro")] 
     //[SerializeField] private int minTetro;
-    [SerializeField] private int maxTetro;
     public int currentTetro = 0;
     //[SerializeField] private int tetroL;
     //[SerializeField] private int tetroR;
     //[SerializeField] private int tetroT;
     //[SerializeField] private int tetroB;
     [SerializeField] GameObject[] shape;
-    [SerializeField] private float timeBtwSpawn = 1;
     private bool canSpawn = true;
 
 
@@ -49,6 +58,24 @@ public class SpawnManager : MonoBehaviour
                 //check if you can spawn a tetro
                 StartCoroutine(TempoSpawn(_spawner, _shape, _orientation));
         }
+
+        if (upgrade)
+            StartCoroutine(Upgrade());
+    }
+
+    IEnumerator Upgrade()
+    {
+        upgrade = false;
+        Debug.Log("Before");
+        yield return new WaitForSeconds(cdUpgrade);
+        Debug.Log("After");
+        speed += modifierspeed;
+        maxTetro += modifierMaxTetro;
+
+        timeBtwSpawn -= modifierSpawnRate;
+        waitingTime -= modifierWaitingMovement;
+
+        upgrade = true;
     }
 
     IEnumerator TempoSpawn(int _spawner, int _shape, int _orientation)
@@ -57,7 +84,7 @@ public class SpawnManager : MonoBehaviour
             SpawnTetro(_shape, _spawner, _orientation);
 
         canSpawn = false;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(timeBtwSpawn);
         canSpawn = true;
     }
 
@@ -71,7 +98,7 @@ public class SpawnManager : MonoBehaviour
         Tetromino tetro = tetri.GetComponentInChildren<Tetromino>();
         tetro.dir = spawnCells[_spawner].GetComponent<DetectSpawnCells>().dir;
         tetro.waitingTime = waitingTime;
-        tetro.velIni = 0.2f;
+        tetro.velIni = speed;
 
         spawnCells[_spawner].GetComponent<DetectSpawnCells>().canSpawnTetro = false;
     }
