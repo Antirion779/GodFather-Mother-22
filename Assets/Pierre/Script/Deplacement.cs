@@ -36,26 +36,32 @@ public class Deplacement : MonoBehaviour
   
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        /*float moveHorizontal = Input.GetAxis("Horizontal");
 
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 
-        rg2D.AddForce(Vector2.right * speed * Time.deltaTime);
+        rg2D.AddForce(Vector2.right * speed * Time.deltaTime);*/
 
         float directionX = 0;
 
-        if (Input.GetButton("Horizontal"))
-                    directionX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        var move = 0;
 
-        if (Input.GetAxis("Horizontal") < 0)
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
+            move = -1;
+            directionX = move * speed * Time.deltaTime;
+            //directionX -= Input.GetAxis("Horizontal") * Time.deltaTime * speed;
             faceR = false;
             SpriteR.flipX = true;
         }
-        else if (Input.GetAxis("Horizontal") > 0)
+
+        if (Input.GetKey(KeyCode.RightArrow))
         {
+            move = 1;
+            directionX = move * speed * Time.deltaTime;
+            //directionX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
             faceR = true;
             SpriteR.flipX = false;
         }
