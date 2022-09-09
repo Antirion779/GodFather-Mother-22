@@ -27,6 +27,8 @@ public class DeplacementJ2 : MonoBehaviour
     public bool playerH2 = false;
     public bool playerV = false;
 
+    public GameObject p1, p2, barre1, barre2, spawn, winj2;
+
     void Start()
     {
         rg2D = GetComponent<Rigidbody2D>();
@@ -73,10 +75,10 @@ public class DeplacementJ2 : MonoBehaviour
 
         if (directionX < 0 && murH2 == false && playerH2 == false)
             transform.Translate(directionX, 0, 0);
-        
+
 
         if ((isGrounded || isPlayered) && murV || murH1 && murH2)
-            Debug.Log("t mor");
+            Death();
 
 
         if (Input.GetButtonDown("Jump") && (isGrounded || isPlayered) && playerV == false)
@@ -112,6 +114,24 @@ public class DeplacementJ2 : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+    }
+
+    private void Death()
+    {
+        p1.SetActive(false);
+        p2.SetActive(false);
+        barre1.SetActive(false);
+        barre2.SetActive(false);
+        spawn.SetActive(false);
+        winj2.SetActive(true);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("DeathZone"))
+        {
+            Death();
+        }
     }
 
 }
