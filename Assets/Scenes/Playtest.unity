@@ -656,19 +656,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
       propertyPath: speed
-      value: 0.5
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
+      propertyPath: maxTetro
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
       propertyPath: cdUpgrade
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
       propertyPath: timeBtwSpawn
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
       propertyPath: modifierspeed
-      value: 0
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
+      propertyPath: modifierMaxTetro
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
+      propertyPath: modifierSpawnRate
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3687880523822242062, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
       propertyPath: m_RootOrder
@@ -944,7 +956,7 @@ MonoBehaviour:
   speed: 1
   move: 0
   faceR: 1
-  force: 1.5
+  force: 2.3
   isGrounded: 0
   isPlayered: 0
   groundCheck: {fileID: 1045209957}
@@ -1050,7 +1062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   faceR: 1
-  force: 1.5
+  force: 2.3
   isGrounded: 0
   isPlayered: 0
   groundCheck: {fileID: 978348849}

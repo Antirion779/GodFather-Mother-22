@@ -96,7 +96,8 @@ GameObject:
   - component: {fileID: 2726428252258230036}
   - component: {fileID: 6643914076556580986}
   - component: {fileID: 7362549386925612018}
-  m_Layer: 0
+  - component: {fileID: 4558066513935990434}
+  m_Layer: 7
   m_Name: l
   m_TagString: Tetromino
   m_Icon: {fileID: 0}
@@ -132,11 +133,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velIni: 1
+  waitingTime: 0
   objectif: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
   canMove: 0
   hasToStop: 0
   ID: 0
+  animator: {fileID: 0}
 --- !u!60 &6643914076556580986
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -180,12 +183,32 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &4558066513935990434
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9188625028444541535}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8bb8fb3a97861b4e83c03b78a2d6c27, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
