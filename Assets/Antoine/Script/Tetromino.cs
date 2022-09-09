@@ -50,6 +50,7 @@ public class Tetromino : MonoBehaviour
         if (Bam.gameObject.tag == "Tetromino")
         {
             hasToStop = true;
+            SoundManager.Instance.PlayCollision(transform.position,1.0f);
             StartCoroutine(Kaboom());
         }
         else if (Bam.gameObject.tag == "DeadZone")
@@ -64,6 +65,7 @@ public class Tetromino : MonoBehaviour
         animator.SetBool("Death", true);
         yield return new WaitForSeconds(SpawnManager.Instance.timeBeforeExplosion);
         SpawnManager.Instance.currentTetro -= 1;
+        SoundManager.Instance.PlayVanish(transform.position, 1.0f);
         Destroy(gameObject);
     }
 }
