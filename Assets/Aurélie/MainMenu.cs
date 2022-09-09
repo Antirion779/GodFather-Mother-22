@@ -22,21 +22,25 @@ public class MainMenu : MonoBehaviour
             select = 1;
             arrow1.SetActive(true);
             arrow2.SetActive(false);
+            //AudioManager.Instance.Play("buttonselect");
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             select = 2;
             arrow2.SetActive(true);
             arrow1.SetActive(false);
+            //AudioManager.Instance.Play("buttonselect");
         }
         if (select == 1)
         {
             if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.RightShift))
-                Debug.Log("truc");
+                //AudioManager.Instance.Play("buttonerror");
+                Debug.Log("pas de 1p");
         }
         if (select == 2)
         {
             if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.RightShift))
+                //AudioManager.Instance.Play("buttonpress");
                 SceneManager.LoadScene("Playtest");
         }
     }
