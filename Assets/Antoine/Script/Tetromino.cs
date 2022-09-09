@@ -20,6 +20,7 @@ public class Tetromino : MonoBehaviour
     void Start()
     {
         objectif = transform.position + (dir * 0.08f);
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -60,8 +61,8 @@ public class Tetromino : MonoBehaviour
 
     IEnumerator Kaboom()
     {
+        animator.SetBool("Death", true);
         yield return new WaitForSeconds(SpawnManager.Instance.timeBeforeExplosion);
-        //animator.SetBool("Death", true);
         SpawnManager.Instance.currentTetro -= 1;
         Destroy(gameObject);
     }
