@@ -73,6 +73,7 @@ public class DeplacementJ2 : MonoBehaviour
 
         if (directionX < 0 && murH2 == false && playerH2 == false)
             transform.Translate(directionX, 0, 0);
+        
 
         if ((isGrounded || isPlayered) && murV || murH1 && murH2)
             Debug.Log("t mor");
