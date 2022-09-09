@@ -559,7 +559,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vitesse: 0.01
+  logo2: {fileID: 2111882567}
   sonLogo: {fileID: 1800837816}
+  laCamera: {fileID: 519420028}
+  gameboy1: {fileID: 851391189}
+  gameboy2: {fileID: 1977644561}
 --- !u!1 &1800837816
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,7 +972,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2111882568}
   - component: {fileID: 2111882569}
-  - component: {fileID: 2111882570}
   m_Layer: 0
   m_Name: nintendologo
   m_TagString: Untagged
@@ -1043,20 +1046,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2111882570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111882567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0422fe240d93a0a4c804ad4e159fe67b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vitesse: 0.01
-  sonLogo: {fileID: 1800837816}
 --- !u!1 &2136662853
 GameObject:
   m_ObjectHideFlags: 0
