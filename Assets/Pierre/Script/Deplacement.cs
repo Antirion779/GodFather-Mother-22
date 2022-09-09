@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Deplacement : MonoBehaviour
@@ -26,6 +28,8 @@ public class Deplacement : MonoBehaviour
     public bool playerH1 = false;
     public bool playerH2 = false;
     public bool playerV = false;
+
+    public GameObject p1, p2, barre1, barre2, spawn, winj1;
 
     void Start()
     {
@@ -73,9 +77,9 @@ public class Deplacement : MonoBehaviour
             transform.Translate(directionX, 0, 0);
 
         if ((isGrounded || isPlayered) && murV || murH1 && murH2)
-            Debug.Log("t mor");
+            Death();
 
-        
+
 
         if (Input.GetKeyDown(KeyCode.RightShift) && (isGrounded || isPlayered) && playerV == false)
             rg2D.velocity = Vector2.up* force;
@@ -100,6 +104,8 @@ public class Deplacement : MonoBehaviour
 
     }
 
+    
+
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionLayers);
@@ -110,6 +116,24 @@ public class Deplacement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+    }
+
+    private void Death()
+    {
+        p1.SetActive(false);
+        p2.SetActive(false);
+        barre1.SetActive(false);
+        barre2.SetActive(false);
+        spawn.SetActive(false);
+        winj1.SetActive(true);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("DeathZone"))
+        {
+            Death();
+        }
     }
 
 }
