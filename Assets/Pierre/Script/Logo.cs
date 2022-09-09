@@ -44,10 +44,7 @@ public class Logo : MonoBehaviour
 
         if (compteur <= 0 && reset == true)
         {
-            while (compteur > -5)
-            {
-                laCamera.transform.Translate(0, vitesse, 0);
-            }
+            SceneManager.LoadScene("Main menu");
         }
             
     }
