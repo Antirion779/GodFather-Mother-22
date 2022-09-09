@@ -15,6 +15,7 @@ public class Tetromino : MonoBehaviour
     [SerializeField] private bool canMove = false;
     [SerializeField] private bool hasToStop = false;
     public int ID;
+    [SerializeField] private Animator animator;
 
     void Start()
     {
@@ -45,7 +46,6 @@ public class Tetromino : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D Bam)
     {
-        Debug.Log(Bam.gameObject.name + Bam.GetContact(0).point);
         if (Bam.gameObject.tag == "Tetromino")
         {
             hasToStop = true;
@@ -61,7 +61,7 @@ public class Tetromino : MonoBehaviour
     IEnumerator Kaboom()
     {
         yield return new WaitForSeconds(SpawnManager.Instance.timeBeforeExplosion);
-        //Play Explosion
+        //animator.SetBool("Death", true);
         SpawnManager.Instance.currentTetro -= 1;
         Destroy(gameObject);
     }

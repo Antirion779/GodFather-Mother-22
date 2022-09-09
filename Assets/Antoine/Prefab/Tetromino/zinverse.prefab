@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 146025035655151761}
   - component: {fileID: 5264139115465376825}
   - component: {fileID: -3750962650822288309}
+  - component: {fileID: 8704735696175632164}
   m_Layer: 7
   m_Name: zinverse
   m_TagString: Tetromino
@@ -138,6 +139,7 @@ MonoBehaviour:
   canMove: 0
   hasToStop: 0
   ID: 0
+  animator: {fileID: 0}
 --- !u!60 &5264139115465376825
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -192,3 +194,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &8704735696175632164
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4675343919576649797}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8bb8fb3a97861b4e83c03b78a2d6c27, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
