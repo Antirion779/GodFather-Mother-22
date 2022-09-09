@@ -47,7 +47,6 @@ public class Logo : MonoBehaviour
             while (compteur > -5)
             {
                 laCamera.transform.Translate(0, vitesse, 0);
-                laCameraMain.orthographicSize -= vitesse;
             }
         }
             
