@@ -12,7 +12,8 @@ public class Logo : MonoBehaviour
 
     public float vitesse;
 
-    public GameObject sonLogo;
+    public GameObject logo2, sonLogo, laCamera, gameboy1, gameboy2;
+    public Camera laCameraMain;
 
     private bool timer = false;
     private bool reset = false;
@@ -23,7 +24,10 @@ public class Logo : MonoBehaviour
         compteur -= Time.deltaTime;
 
         if (fall)
+        {
             transform.Translate(0, -vitesse, 0);
+            logo2.transform.Translate(0, -vitesse, 0);
+        }
 
         if (transform.position.y <= 2.35)
         {
@@ -40,7 +44,11 @@ public class Logo : MonoBehaviour
 
         if (compteur <= 0 && reset == true)
         {
-            //afficher menu
+            while (compteur > -5)
+            {
+                laCamera.transform.Translate(0, vitesse, 0);
+                laCameraMain.orthographicSize -= vitesse;
+            }
         }
             
     }
