@@ -73,12 +73,13 @@ public class DeplacementJ2 : MonoBehaviour
 
         if (directionX < 0 && murH2 == false && playerH2 == false)
             transform.Translate(directionX, 0, 0);
+        
 
         if ((isGrounded || isPlayered) && murV || murH1 && murH2)
             Debug.Log("t mor");
 
 
-        if (Input.GetButton("Jump") && (isGrounded || isPlayered) && playerV == false)
+        if (Input.GetButtonDown("Jump") && (isGrounded || isPlayered) && playerV == false)
             rg2D.velocity = Vector2.up* force;
 
         Raycasting();
