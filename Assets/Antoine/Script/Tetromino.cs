@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tetromino : MonoBehaviour
@@ -16,6 +15,7 @@ public class Tetromino : MonoBehaviour
     [SerializeField] private bool canMove = false;
     [SerializeField] private bool hasToStop = false;
     public int ID;
+    [SerializeField] private Animator animator;
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class Tetromino : MonoBehaviour
 
     void GiveObjectif()
     {
-        objectif += (dir * 0.08f);
+        objectif += (dir * 0.16f);
         StartCoroutine(Move());
     }
     IEnumerator Move()
@@ -46,7 +46,6 @@ public class Tetromino : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D Bam)
     {
-        Debug.Log(Bam.gameObject.tag);
         if (Bam.gameObject.tag == "Tetromino")
         {
             hasToStop = true;
@@ -62,7 +61,7 @@ public class Tetromino : MonoBehaviour
     IEnumerator Kaboom()
     {
         yield return new WaitForSeconds(SpawnManager.Instance.timeBeforeExplosion);
-        //Play Explosion
+        //animator.SetBool("Death", true);
         SpawnManager.Instance.currentTetro -= 1;
         Destroy(gameObject);
     }

@@ -103,7 +103,8 @@ MonoBehaviour:
   - {fileID: 6796902903061385391}
   - {fileID: 6796902903277487208}
   tetro: []
-  timeBeforeExplosion: 3
+  timeBeforeExplosion: 5
+  waitingTime: 1.5
   minTetro: 0
   maxTetro: 5
   currentTetro: 0
