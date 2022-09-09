@@ -9,6 +9,8 @@ public class SoundManager : MonoBehaviour
     [Header("Audio")] 
     [SerializeField] private AudioClip collisionClip;
     [SerializeField] private AudioClip vanishClip;
+    [SerializeField] private AudioClip playerDeathClip;
+    [SerializeField] private AudioClip playerJumpClip;
 
     void Awake()
     {
@@ -26,5 +28,17 @@ public class SoundManager : MonoBehaviour
     {
         //Plays a clip once at a specific position, without an Audio Source
         AudioSource.PlayClipAtPoint(vanishClip, pos, volume);   
+    }
+
+    public void PlayPlayerDeath(Vector3 pos, float volume)
+    {
+        //Plays a clip once at a specific position, without an Audio Source
+        AudioSource.PlayClipAtPoint(playerDeathClip, pos, volume);
+    }
+
+    public void PlayPlayerJump(Vector3 pos, float volume)
+    {
+        //Plays a clip once at a specific position, without an Audio Source
+        AudioSource.PlayClipAtPoint(playerJumpClip, pos, volume);
     }
 }

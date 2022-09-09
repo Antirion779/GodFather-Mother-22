@@ -82,7 +82,10 @@ public class DeplacementJ2 : MonoBehaviour
 
 
         if (Input.GetButtonDown("Jump") && (isGrounded || isPlayered) && playerV == false)
+        {
             rg2D.velocity = Vector2.up* force;
+            SoundManager.Instance.PlayPlayerJump(transform.position, 0.5f);
+        }
 
         Raycasting();
         Behaviours();
@@ -118,12 +121,15 @@ public class DeplacementJ2 : MonoBehaviour
 
     private void Death()
     {
+        SoundManager.Instance.PlayPlayerDeath(transform.position, 1.0f);
         p1.SetActive(false);
         p2.SetActive(false);
         barre1.SetActive(false);
-        barre2.SetActive(false);
+        if(barre2 != null)
+            barre2.SetActive(false);
         spawn.SetActive(false);
-        winj2.SetActive(true);
+        if (winj2 != null)
+            winj2.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
