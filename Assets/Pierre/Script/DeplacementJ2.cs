@@ -78,7 +78,7 @@ public class DeplacementJ2 : MonoBehaviour
             Debug.Log("t mor");
 
 
-        if (Input.GetButton("Jump") && (isGrounded || isPlayered) && playerV == false)
+        if (Input.GetButtonDown("Jump") && (isGrounded || isPlayered) && playerV == false)
             rg2D.velocity = Vector2.up* force;
 
         Raycasting();

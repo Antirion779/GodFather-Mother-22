@@ -682,6 +682,10 @@ PrefabInstance:
       propertyPath: modifierSpawnRate
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 3687880523822242057, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
+      propertyPath: timeBeforeExplosion
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3687880523822242062, guid: a79b929c2a3367747bea3bcfbfd2d2a6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -929,7 +933,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976036886}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.637, y: 0.242, z: 0}
+  m_LocalPosition: {x: -0.401, y: 0.259, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:

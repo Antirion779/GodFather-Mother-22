@@ -71,7 +71,7 @@ public class Deplacement : MonoBehaviour
 
         
 
-        if (Input.GetKey(KeyCode.RightShift) && (isGrounded || isPlayered) && playerV == false)
+        if (Input.GetKeyDown(KeyCode.RightShift) && (isGrounded || isPlayered) && playerV == false)
             rg2D.velocity = Vector2.up* force;
 
         Raycasting();
