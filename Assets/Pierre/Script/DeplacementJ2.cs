@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class DeplacementJ2 : MonoBehaviour
 {
@@ -9,6 +12,7 @@ public class DeplacementJ2 : MonoBehaviour
 
     public bool faceR = true;
     private SpriteRenderer SpriteR;
+    private SpriteRenderer spriteChapo;
 
     public float force;
     public bool isGrounded, isPlayered;
@@ -27,12 +31,14 @@ public class DeplacementJ2 : MonoBehaviour
     public bool playerH2 = false;
     public bool playerV = false;
 
-    public GameObject p1, p2, barre1, barre2, spawn, winj2;
+    public GameObject p1, p2, barre1, barre2, spawn, winj2, chapo;
+
 
     void Start()
     {
         rg2D = GetComponent<Rigidbody2D>();
         SpriteR = GetComponent<SpriteRenderer>();
+        spriteChapo = chapo.GetComponent<SpriteRenderer>();
     }
 
   
@@ -58,6 +64,7 @@ public class DeplacementJ2 : MonoBehaviour
             //directionX -= Input.GetAxis("Horizontal") * Time.deltaTime * speed;
             faceR = false;
             SpriteR.flipX = true;
+            spriteChapo.flipX = true;
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -67,6 +74,7 @@ public class DeplacementJ2 : MonoBehaviour
             //directionX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
             faceR = true;
             SpriteR.flipX = false;
+            spriteChapo.flipX = false;
         }
 
 
@@ -82,12 +90,16 @@ public class DeplacementJ2 : MonoBehaviour
 
 
         if (Input.GetButtonDown("Jump") && (isGrounded || isPlayered) && playerV == false)
-            rg2D.velocity = Vector2.up* force;
+        {
+            rg2D.velocity = Vector2.up * force;
+            SoundManager.Instance.PlayPlayerJump(transform.position, 0.5f);
+        }
 
         Raycasting();
         Behaviours();
 
-        }
+        
+    }
 
     void Raycasting()
     {
@@ -118,17 +130,20 @@ public class DeplacementJ2 : MonoBehaviour
 
     private void Death()
     {
+        SoundManager.Instance.PlayPlayerDeath(transform.position, 1.0f);
         p1.SetActive(false);
         p2.SetActive(false);
-        barre1.SetActive(false);
-        barre2.SetActive(false);
+        if (barre1 != null)
+            barre1.SetActive(false);
+        if (barre2 != null)
+            barre2.SetActive(false);
         spawn.SetActive(false);
         winj2.SetActive(true);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("DeathZone"))
+        if (collision.gameObject.CompareTag("DeadZone"))
         {
             Death();
         }
