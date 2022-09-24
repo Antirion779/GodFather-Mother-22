@@ -22,14 +22,16 @@ public class DeplacementJ2 : MonoBehaviour
     public LayerMask collisionLayers; 
     public LayerMask playerLayers;
 
-    public Transform sightStart, sightEndH1, sightEndH2, sightEndV;
+    public Transform sightStart, sightEndH1, sightEndH2, sightEndV1, sightEndV2;
     public bool murH1 = false;
     public bool murH2 = false;
-    public bool murV = false;
+    public bool murV1 = false;
+    public bool murV2 = false;
 
     public bool playerH1 = false;
     public bool playerH2 = false;
-    public bool playerV = false;
+    public bool playerV1 = false;
+    public bool playerV2 = false;
 
     public GameObject p1, p2, barre1, barre2, spawn, winj2, chapo;
 
@@ -85,11 +87,11 @@ public class DeplacementJ2 : MonoBehaviour
             transform.Translate(directionX, 0, 0);
 
 
-        if ((isGrounded || isPlayered) && murV || murH1 && murH2)
+        if (isGrounded && (murV1 || murV2) || isPlayered && (murH1 && murH2))
             Death();
 
 
-        if (Input.GetButtonDown("Jump") && (isGrounded || isPlayered) && playerV == false)
+        if (Input.GetButtonDown("Jump") && (isGrounded || isPlayered) && (playerV1 || playerV2) == false)
         {
             rg2D.velocity = Vector2.up * force;
             SoundManager.Instance.PlayPlayerJump(transform.position, 0.5f);
@@ -105,10 +107,12 @@ public class DeplacementJ2 : MonoBehaviour
     {
         murH1 = Physics2D.Linecast(sightStart.position, sightEndH1.position, 1 << LayerMask.NameToLayer("Ground"));
         murH2 = Physics2D.Linecast(sightStart.position, sightEndH2.position, 1 << LayerMask.NameToLayer("Ground"));
-        murV = Physics2D.Linecast(sightStart.position, sightEndV.position, 1 << LayerMask.NameToLayer("Ground"));
+        murV1 = Physics2D.Linecast(sightStart.position, sightEndV1.position, 1 << LayerMask.NameToLayer("Ground"));
+        murV2 = Physics2D.Linecast(sightStart.position, sightEndV2.position, 1 << LayerMask.NameToLayer("Ground"));
         playerH1 = Physics2D.Linecast(sightStart.position, sightEndH1.position, 1 << LayerMask.NameToLayer("Player1"));
         playerH2 = Physics2D.Linecast(sightStart.position, sightEndH2.position, 1 << LayerMask.NameToLayer("Player1"));
-        playerV = Physics2D.Linecast(sightStart.position, sightEndV.position, 1 << LayerMask.NameToLayer("Player1"));
+        playerV1 = Physics2D.Linecast(sightStart.position, sightEndV1.position, 1 << LayerMask.NameToLayer("Player1"));
+        playerV2 = Physics2D.Linecast(sightStart.position, sightEndV2.position, 1 << LayerMask.NameToLayer("Player1"));
     }
 
     void Behaviours()
