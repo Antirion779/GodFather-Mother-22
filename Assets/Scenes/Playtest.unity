@@ -1180,7 +1180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 357330626}
   m_Layer: 6
-  m_Name: EndRaycastVertical
+  m_Name: EndRaycastVertical1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1194,7 +1194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357330625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.04, z: 0}
+  m_LocalPosition: {x: -0.025, y: 0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2707,7 +2707,7 @@ Transform:
   - {fileID: 1042620043}
   - {fileID: 1740188437}
   m_Father: {fileID: 976036891}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &659546119
 GameObject:
@@ -3421,6 +3421,37 @@ Transform:
   m_Father: {fileID: 976036891}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &847612553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 847612554}
+  m_Layer: 6
+  m_Name: EndRaycastVertical2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &847612554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847612553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.025, y: 0.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1037186076}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &877410624
 GameObject:
   m_ObjectHideFlags: 0
@@ -3836,6 +3867,7 @@ Transform:
   - {fileID: 1645525829}
   - {fileID: 444175015}
   - {fileID: 1373362764}
+  - {fileID: 1330321825}
   - {fileID: 636395132}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -3869,13 +3901,16 @@ MonoBehaviour:
   sightStart: {fileID: 826945157}
   sightEndH1: {fileID: 1645525829}
   sightEndH2: {fileID: 444175015}
-  sightEndV: {fileID: 1373362764}
+  sightEndV1: {fileID: 1373362764}
+  sightEndV2: {fileID: 1330321825}
   murH1: 0
   murH2: 0
-  murV: 0
+  murV1: 0
+  murV2: 0
   playerH1: 0
   playerH2: 0
-  playerV: 0
+  playerV1: 0
+  playerV2: 0
   p1: {fileID: 1037186075}
   p2: {fileID: 976036886}
   barre1: {fileID: 1141496163}
@@ -3951,6 +3986,7 @@ Transform:
   - {fileID: 888538957}
   - {fileID: 170356352}
   - {fileID: 357330626}
+  - {fileID: 847612554}
   - {fileID: 1369754777}
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -3983,13 +4019,16 @@ MonoBehaviour:
   sightStart: {fileID: 1065894236}
   sightEndH1: {fileID: 888538957}
   sightEndH2: {fileID: 170356352}
-  sightEndV: {fileID: 357330626}
+  sightEndV1: {fileID: 357330626}
+  sightEndV2: {fileID: 847612554}
   murH1: 0
   murH2: 0
-  murV: 0
+  murV1: 0
+  murV2: 0
   playerH1: 0
   playerH2: 0
-  playerV: 0
+  playerV1: 0
+  playerV2: 0
   p1: {fileID: 1037186075}
   p2: {fileID: 976036886}
   barre1: {fileID: 1141496163}
@@ -5123,6 +5162,37 @@ Transform:
   m_Father: {fileID: 321558075}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &1330321824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1330321825}
+  m_Layer: 8
+  m_Name: EndRaycastVertical2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1330321825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330321824}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.025, y: 0.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 976036891}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1360405465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5243,7 +5313,7 @@ Transform:
   - {fileID: 672205966}
   - {fileID: 577781841}
   m_Father: {fileID: 1037186076}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1373362763
 GameObject:
@@ -5255,7 +5325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1373362764}
   m_Layer: 8
-  m_Name: EndRaycastVertical
+  m_Name: EndRaycastVertical1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5269,7 +5339,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373362763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.04, z: 0}
+  m_LocalPosition: {x: -0.025, y: 0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
